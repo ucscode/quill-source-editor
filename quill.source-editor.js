@@ -21,7 +21,7 @@ import { CodeJar } from './codejar.js';
 /**
  * SourceEditor Class
  */
-const SourceEditor = (function(e) {
+const QuillSourceEditor = (function(e) {
 	
 	if( !window.Quill ) throw new ReferenceError("Quill is not defined" );
 	
@@ -296,4 +296,4 @@ const SourceEditor = (function(e) {
 	
 });
 
-export default SourceEditor;
+export default QuillSourceEditor;
