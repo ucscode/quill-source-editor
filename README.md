@@ -11,6 +11,46 @@ Quill Source Editor is a module that adds a button to the Quill toolbar, allowin
 
 Quill Source Editor is useful for several reasons. One of the most important is that it allows users to edit the HTML code behind their content directly. For example, Quill Image uses data URL to render images, which can be quite long and space-consuming because it's encoded in base64. If you have multiple images, this can affect the performance of the website when the content is rendered in front-end. With Quill Source Editor, you can replace the data URL with a regular HTTP URL that points to an image and also add specific attributes like width="100%" since Quill does not directly allow resizing of images.
 
+# Installation
+To use Quill Source Editor, you need to download the quill-source-editor.js file and the CodeJar.js library and include them in your project. Then, you can import the QuillSourceEditor module and register it with Quill.js.
+
+```js
+import QuillSourceEditor from "./quill-source-editor.js";
+
+Quill.register("modules/sourceEditor", QuillSourceEditor);
+
+const config = {
+	theme: "snow",
+	modules: {
+		toolbar: [...],
+		sourceEditor: {
+			indent: true,
+			highlight: hljs.highlightElement
+		}
+	}
+}
+
+let quill = new Quill('#element', config);
+```
+The `hljs.highlightElement` function is used for syntax highlighting, but you can replace it with `Prism.highlightElement` or any other highlighting function of your choice.
+
+# Usage
+By default, Quill Source Editor adds a button to the toolbar that allows users to switch between the WYSIWYG view and the code view. The button is positioned as the last button on the toolbar, but you can also add it to a specific position by including "source-editor" as a button in the toolbar configuration.
+
+```js
+modules: {
+	toolbar: [
+		['bold', 'italic'],
+		['link', 'image', "source-editor"]
+	]
+};
+```
+# Benefits
+Quill Source Editor provides several benefits for users who need to edit the HTML source code of their content directly. For example, they can:
+
+- Add specific attributes to elements, such as width="100%", that Quill.js does not support by default
+- Analyze and edit their code directly to make changes more efficiently
+
 # Contributing
 If you'd like to contribute to Quill Source Editor, please feel free to open a pull request or issue on GitHub.
 
